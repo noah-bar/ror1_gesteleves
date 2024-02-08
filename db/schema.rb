@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_08_090826) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_08_092546) do
+  create_table "classrooms", force: :cascade do |t|
+    t.string "name"
+    t.integer "year"
+    t.integer "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teacher_id"], name: "index_classrooms_on_teacher_id"
+  end
+
   create_table "people", force: :cascade do |t|
     t.string "type"
     t.string "first_name"
@@ -25,4 +34,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_08_090826) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "classrooms", "people", column: "teacher_id"
 end
