@@ -1,5 +1,6 @@
 class Classroom < ApplicationRecord
   belongs_to :teacher
+  has_many :classrooms_students
   has_many :students, through: :classrooms_students
 
   def self.in_activity
