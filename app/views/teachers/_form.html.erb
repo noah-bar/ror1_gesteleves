@@ -1,0 +1,27 @@
+<%= form_with model: @teacher do | form | %>
+    <div>
+        <%= form.label :first_name, class: "form-label" %>
+        <%= form.text_field :first_name, class: "form-control" %>
+    </div>
+    <div class="mt-2">
+        <%= form.label :last_name, class: "form-label" %>
+        <%= form.text_field :last_name, class: "form-control" %>
+    </div>
+    <div class="mt-2">
+        <%= form.label :email, class: "form-label" %>
+        <%= form.email_field :email, class: "form-control" %>
+    </div>
+    <div class="mt-2">
+        <%= form.label :address, class: "form-label" %>
+        <%= form.text_field :address, class: "form-control" %>
+    </div>
+    <div class="mt-2">
+        <%= form.label :npa, class: "form-label" %>
+        <%= form.number_field :npa, class: "form-control" %>
+    </div>
+    <div class="mt-2">
+        <%= form.label :city, class: "form-label" %>
+        <%= form.text_field :city, class: "form-control" %>
+    </div>
+    <%= form.submit class: "btn btn-primary mt-2" %>
+<% end %>
