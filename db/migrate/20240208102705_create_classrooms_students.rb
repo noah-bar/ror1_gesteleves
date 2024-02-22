@@ -3,6 +3,7 @@ class CreateClassroomsStudents < ActiveRecord::Migration[7.0]
     create_table :classrooms_students, id: false do |t|
       t.belongs_to :classroom
       t.belongs_to :student, foreign_key: { to_table: :people }
+      t.integer :status
       t.timestamps
     end
   end

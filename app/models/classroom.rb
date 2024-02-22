@@ -1,4 +1,4 @@
 class Classroom < ApplicationRecord
   belongs_to :teacher
-  has_and_belongs_to_many :students, join_table: :classrooms_students
+  has_many :students, through: :classrooms_students
 end
