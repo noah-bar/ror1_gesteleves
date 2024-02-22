@@ -1,6 +1,6 @@
 class ClassroomsController < ApplicationController
   def index
-    @classrooms = Classroom.all
+    @classrooms = Classroom.in_activity
   end
 
   def show

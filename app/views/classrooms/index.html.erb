@@ -4,6 +4,8 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
+            <th scope="col">Start at</th>
+            <th scope="col">End at</th>
             <th scope="col">Teacher</th>
             <th scope="col">Options</th>
         </tr>
@@ -13,6 +15,8 @@
             <tr>
                 <td><%= classroom.id %></td>
                 <td><%= classroom.name %></td>
+                <td><%= classroom.start_at %></td>
+                <td><%= classroom.end_at %></td>
                 <td><%= classroom.teacher.full_name %></td>
                 <td>
                     <a href="<%= edit_classroom_path classroom %>" class="btn btn-warning ml-2">Edit</a>
