@@ -1,0 +1,19 @@
+<%= form_with model: @classroom do | form | %>
+    <div>
+        <%= form.label :name, class: "form-label" %>
+        <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="mt-2">
+        <%= form.label :start_at, class: "form-label" %>
+        <%= form.number_field :start_at, class: "form-control" %>
+    </div>
+    <div class="mt-2">
+        <%= form.label :end_at, class: "form-label" %>
+        <%= form.number_field :end_at, class: "form-control" %>
+    </div>
+    <div class="mt-2">
+        <%= form.label :teacher_id, class: "form-label" %>
+        <%= form.collection_select(:teacher_id, Teacher.all, :id, :full_name, {}, {class: "form-control"}) %>
+    </div>
+    <%= form.submit class: "btn btn-primary mt-2" %>
+<% end %>
