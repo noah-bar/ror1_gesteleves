@@ -1,0 +1,23 @@
+<h1>Classrooms</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @branches.each do |branch| %>
+            <tr>
+                <td><%= branch.id %></td>
+                <td><%= branch.name %></td>
+                <td>
+                    <a href="<%= edit_branch_path branch %>" class="btn btn-warning ml-2">Edit</a>
+                    <a href="<%= branch_path branch %>" class="btn btn-primary mr-2">Voir</a>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<a href="<%= new_branch_path %>" class="btn btn-primary">New</a>

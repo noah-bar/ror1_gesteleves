@@ -1,0 +1,7 @@
+<%= form_with model: @branch do | form | %>
+    <div>
+        <%= form.label :name, class: "form-label" %>
+        <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <%= form.submit class: "btn btn-primary mt-2" %>
+<% end %>

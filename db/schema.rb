@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_08_102705) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_29_074912) do
+  create_table "branches", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "classrooms", force: :cascade do |t|
     t.string "name"
     t.integer "start_at"
@@ -21,6 +27,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_08_102705) do
     t.index ["teacher_id"], name: "index_classrooms_on_teacher_id"
   end
 
+  create_table "classrooms_branches", id: false, force: :cascade do |t|
+    t.integer "classroom_id"
+    t.integer "branch_id"
+    t.integer "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["branch_id"], name: "index_classrooms_branches_on_branch_id"
+    t.index ["classroom_id"], name: "index_classrooms_branches_on_classroom_id"
+    t.index ["teacher_id"], name: "index_classrooms_branches_on_teacher_id"
+  end
+
   create_table "classrooms_students", id: false, force: :cascade do |t|
     t.integer "classroom_id"
     t.integer "student_id"
@@ -29,6 +46,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_08_102705) do
     t.datetime "updated_at", null: false
     t.index ["classroom_id"], name: "index_classrooms_students_on_classroom_id"
     t.index ["student_id"], name: "index_classrooms_students_on_student_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.decimal "value"
+    t.date "date"
+    t.integer "classrooms_branch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["classrooms_branch_id"], name: "index_notes_on_classrooms_branch_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -46,5 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_08_102705) do
   end
 
   add_foreign_key "classrooms", "people", column: "teacher_id"
+  add_foreign_key "classrooms_branches", "people", column: "teacher_id"
   add_foreign_key "classrooms_students", "people", column: "student_id"
 end
