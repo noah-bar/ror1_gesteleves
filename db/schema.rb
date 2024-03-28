@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_29_091222) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_28_080022) do
   create_table "branches", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -53,8 +53,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_29_091222) do
     t.integer "teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "semester_id"
     t.index ["branch_id"], name: "index_lessons_on_branch_id"
     t.index ["classroom_id"], name: "index_lessons_on_classroom_id"
+    t.index ["semester_id"], name: "index_lessons_on_semester_id"
     t.index ["teacher_id"], name: "index_lessons_on_teacher_id"
   end
 
@@ -78,6 +80,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_29_091222) do
     t.string "email"
     t.string "acronym"
     t.string "stat"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "semesters", force: :cascade do |t|
+    t.integer "year"
+    t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
