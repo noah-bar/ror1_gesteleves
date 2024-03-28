@@ -1,0 +1,26 @@
+<h1><%= @exam.name %></h1>
+<h2>Students</h2>
+<input type="hidden" class="exam-id" value="<%= @exam.id%>"/>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Full name</th>
+            <th scope="col">note</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @exam.students.each do |student| %>
+            <tr>
+                <td><%= student.full_name %></td>
+                <td>
+                    <input type="hidden" class="student-id" value="<%= student.id%>"/>
+                    <input 
+                        class="form-control note-input" 
+                        value="<%= @exam.note_for_student(student)&.value || "N/A" %>"
+                        style="max-width:75px;"
+                    />
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

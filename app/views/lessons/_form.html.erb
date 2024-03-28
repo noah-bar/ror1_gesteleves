@@ -1,0 +1,15 @@
+<%= form_with model: @lesson do | form | %>
+    <div class="mt-2">
+        <%= form.label :branch_id, class: "form-label" %>
+        <%= form.collection_select(:branch_id, Branch.all, :id, :name, {}, {class: "form-control"}) %>
+    </div>
+        <div class="mt-2">
+        <%= form.label :classroom_id, class: "form-label" %>
+        <%= form.collection_select(:classroom_id, Classroom.active, :id, :name, {}, {class: "form-control"}) %>
+    </div>
+    <div class="mt-2">
+        <%= form.label :teacher_id, class: "form-label" %>
+        <%= form.collection_select(:teacher_id, Teacher.all, :id, :full_name, {}, {class: "form-control"}) %>
+    </div>
+    <%= form.submit class: "btn btn-primary mt-2" %>
+<% end %>

@@ -1,0 +1,15 @@
+<%= form_with model: @exam do | form | %>
+    <td>
+        <%= form.text_field :name, class: "form-control" %>
+    </td>
+    <td>
+        <%= form.text_field :weight, class: "form-control" %>
+    </td>
+    <td>
+        <%= form.date_field :date, class: "form-control" %>
+    </td>
+    <td>
+        <%= form.hidden_field :lesson_id, class: "form-control" %>
+        <%= form.submit class: "btn btn-primary mt-2" %>
+    </td>
+<% end %>

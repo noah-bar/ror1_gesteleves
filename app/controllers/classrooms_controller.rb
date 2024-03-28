@@ -1,6 +1,10 @@
 class ClassroomsController < ApplicationController
   def index
-    @classrooms = Classroom.in_activity
+    if params[:filter] == 'all'
+      @classrooms = Classroom.all
+    else
+      @classrooms = Classroom.active
+    end
   end
 
   def show
