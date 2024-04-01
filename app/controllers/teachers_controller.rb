@@ -12,6 +12,7 @@ class TeachersController < ApplicationController
   end
 
   def create
+    puts teacher_params
     @teacher = Teacher.new teacher_params
     @teacher.reset_password = true
 
@@ -40,6 +41,6 @@ class TeachersController < ApplicationController
   private
 
   def teacher_params
-    params.require(:teacher).permit(:first_name,:password, :last_name, :email, :city, :npa, :address)
+    params.require(:teacher).permit(:first_name,:password, :last_name, :email, :city, :npa, :address, :role)
   end
 end

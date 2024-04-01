@@ -3,8 +3,6 @@ const studentsInputs = document.querySelectorAll('.student-id')
 const examInput = document.querySelector('.exam-id')
 const csrfToken = document.querySelector("[name='csrf-token']").content
 
-console.log(csrfToken)
-
 inputs.forEach((input, index) => {
   const studentInput = studentsInputs[index]
   let oldValue
@@ -44,6 +42,4 @@ const updateNote = async (examId, studentId, note) => {
       }
     })
   })
-
-  console.log(response)
 }

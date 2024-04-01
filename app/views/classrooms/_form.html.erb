@@ -15,5 +15,9 @@
         <%= form.label :teacher_id, class: "form-label" %>
         <%= form.collection_select(:teacher_id, Teacher.all, :id, :full_name, {}, {class: "form-control"}) %>
     </div>
+    <div class="mt-2">
+        <%= form.label :student_ids, "Students", class: "form-label" %>
+        <%= form.collection_select(:student_ids, Student.all, :id, :full_name, {}, {multiple: true, class: "form-control"}) %>
+    </div>
     <%= form.submit class: "btn btn-primary mt-2" %>
 <% end %>
