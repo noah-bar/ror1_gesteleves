@@ -9,12 +9,15 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+
   end
 
   def create
     @student = Student.new student_params
+    @student.reset_password = true
 
     if @student.save
+      flash[:success] = "Student created successfully"
       redirect_to @student
     else
       render :new, status: :unprocessable_entity
@@ -38,6 +41,6 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :email, :city, :npa, :address)
+    params.require(:student).permit(:first_name, :last_name, :email,:password, :city, :npa, :address)
   end
 end

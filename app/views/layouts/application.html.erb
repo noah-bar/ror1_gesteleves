@@ -16,32 +16,41 @@
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Gesteleves</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/students">Students</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/teachers">Teachers</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/classrooms">Classrooms</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/branches">Branches</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/lessons">Lessons</a>
-              </li>
-          </div>
+          <% if current_user %>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/students">Students</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/teachers">Teachers</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/classrooms">Classrooms</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/branches">Branches</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <%= link_to 'Log out', logout_path, data: { "turbo-method": :delete } %>
+            </div>
+          <% end %>
         </div>
       </nav>
     </header>
     <main class="container">
+      <% flash.each do |type, message| %>
+        <div class="alert <%= bootstrap_class_for_flash(type) %> alert-dismissible fade show" role="alert">
+          <%= message %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
       <%= yield %>
-    </div>
+    </main>
   </body>
 </html>

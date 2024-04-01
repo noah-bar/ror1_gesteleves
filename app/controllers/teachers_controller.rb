@@ -13,9 +13,11 @@ class TeachersController < ApplicationController
 
   def create
     @teacher = Teacher.new teacher_params
+    @teacher.reset_password = true
 
     if @teacher.save
-      redirect_to @teacher
+      flash[:success] = "Teacher created successfully"
+      redirect_to teachers_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,6 +40,6 @@ class TeachersController < ApplicationController
   private
 
   def teacher_params
-    params.require(:teacher).permit(:first_name, :last_name, :email, :city, :npa, :address)
+    params.require(:teacher).permit(:first_name,:password, :last_name, :email, :city, :npa, :address)
   end
 end

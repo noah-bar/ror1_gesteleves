@@ -1,0 +1,20 @@
+<h1 class="mb-4">Login page</h1>
+<%= form_with model: @user, url: person_sessions_path, class: "needs-validation", novalidate: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :email, class: "form-label" %>
+    <%= f.email_field :email, class: "form-control", required: true %>
+    <div class="invalid-feedback">
+      Please enter your email.
+    </div>
+  </div>
+  <div class="mb-3">
+    <%= f.label :password, class: "form-label" %>
+    <%= f.password_field :password, class: "form-control", required: true %>
+    <div class="invalid-feedback">
+      Please enter your password.
+    </div>
+  </div>
+  <div class="mb-3">
+    <%= f.submit 'Login', class: "btn btn-primary" %>
+  </div>
+<% end %>
