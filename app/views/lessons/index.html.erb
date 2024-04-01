@@ -1,8 +1,15 @@
 <h1>Lessons</h1>
 <%= form_with(url: lessons_path, method: :get, local: true) do %>
-  <div class="form-group">
+  <div style="max-width: 175px; display:flex; justify-content: center; align-items: center; gap: 1rem;">
     <label for="filter">Filter:</label>
-    <%= select_tag :filter, options_for_select([['Active', 'active'],['All', 'all']], params[:filter] || 'Active'), onchange: 'this.form.submit();' %>
+    <%=
+      select_tag(
+        :filter,
+        options_for_select([['Active', 'active'],['All', 'all']], params[:filter] || 'Active'),
+        onchange: 'this.form.submit();',
+        class: 'form-control',
+      )
+    %>
   </div>
 <% end %>
 <table class="table">
@@ -12,6 +19,7 @@
             <th scope="col">Classroom</th>
             <th scope="col">Branch</th>
             <th scope="col">Teacher</th>
+            <th scope="col">Semester</th>
             <th scope="col">Options</th>
         </tr>
     </thead>
@@ -22,6 +30,7 @@
                 <td><%= lesson.classroom.name %></td>
                 <td><%= lesson.branch.name %></td>
                 <td><%= lesson.teacher.full_name %></td>
+                <td><%= lesson.semester&.name %></td>
                 <td>
                     <a href="<%= edit_lesson_path lesson %>" class="btn btn-warning ml-2">Edit</a>
                     <a href="<%= lesson_path lesson %>" class="btn btn-primary mr-2">Voir</a>

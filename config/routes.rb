@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :branches
   resources :lessons
   resources :exams
+  resources :semesters, expect: [:show]
   resources :notes, only: [:create]
 end

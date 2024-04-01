@@ -1,0 +1,33 @@
+<h1>Semesters</h1>
+
+<%= form_with(url: semesters_path, method: :get, local: true) do %>
+  <div class="form-group">
+    <label for="filter">Filter:</label>
+    <%= select_tag :filter, options_for_select([['Active', 'active'],['All', 'all']], params[:filter] || 'Active'), onchange: 'this.form.submit();' %>
+  </div>
+<% end %>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Year</th>
+            <th scope="col">Number</th>
+            <th scope="col">Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @semesters.each do |semester| %>
+            <tr>
+                <td><%= semester.id %></td>
+                <td><%= semester.year %></td>
+                <td><%= semester.number %></td>
+                <td>
+                    <a href="<%= edit_semester_path semester %>" class="btn btn-warning ml-2">Edit</a>
+                    <a href="<%= semester_path semester %>" class="btn btn-primary mr-2">Voir</a>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<a href="<%= new_semester_path %>" class="btn btn-primary">New</a>

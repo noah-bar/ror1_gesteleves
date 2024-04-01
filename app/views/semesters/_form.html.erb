@@ -1,0 +1,11 @@
+<%= form_with model: @semester do | form | %>
+    <div>
+        <%= form.label :year, class: "form-label" %>
+        <%= form.number_field :year, class: "form-control" %>
+    </div>
+    <div class="mt-2">
+        <%= form.label :number, class: "form-label" %>
+        <%= form.number_field :number, class: "form-control" %>
+    </div>
+    <%= form.submit class: "btn btn-primary mt-2" %>
+<% end %>
