@@ -6,4 +6,5 @@ class Exam < ApplicationRecord
   def note_for_student student
     notes.find_by student: student
   end
+
 end

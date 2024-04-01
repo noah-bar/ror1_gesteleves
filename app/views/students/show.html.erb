@@ -1,1 +1,26 @@
-<h1><%= @student.first_name %> <%= @student.last_name %></h1>
+<div class="container mt-4">
+  <h1 class="mb-3"><%= @student.first_name %> <%= @student.last_name %></h1>
+  <h2 class="mb-3">My notes</h2>
+  <p class="mb-3">Classroom : <%= @student.current_classroom&.name %></p>
+  <% @student.current_classroom&.unique_semesters&.each do |semester| %>
+    <div class="card mb-3">
+      <div class="card-header" style="display:flex; justify-content: space-between; align-items: center">
+        <div>
+          Semester <%= semester.name %>
+        </div>
+        <div>
+          <strong>Average : <%= semester.average_for_student @student %></strong>
+        </div>
+      </div>
+      <div class="card-body">
+        <% semester.lessons.each do |lesson| %>
+          <h5 class="card-title"><%= lesson.branch.name %></h5>
+          <% lesson.exams.each do |exam| %>
+            <p class="card-text"><strong><%= exam.name %> (<%= exam.date %>): </strong> <%= exam.note_for_student(@student)&.value %></p>
+          <% end %>
+          <p class="card-text"><strong>Average: <%= lesson.average_for_student(@student) %></strong></p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
