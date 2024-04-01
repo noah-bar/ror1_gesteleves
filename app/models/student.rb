@@ -5,6 +5,6 @@ class Student < Person
   has_many :semesters, through: :lessons
 
   def current_classroom
-    classrooms.order(start_at: :asc).first
+    classrooms.where('end_at >= ?', Date.today.year).order(start_at: :asc).first
   end
 end
