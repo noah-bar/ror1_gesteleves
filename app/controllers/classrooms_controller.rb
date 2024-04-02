@@ -39,6 +39,12 @@ class ClassroomsController < ApplicationController
     end
   end
 
+  def destroy
+    @classroom = Classroom.find(params[:id])
+    @classroom.destroy
+    redirect_to classrooms_path
+  end
+
   private
 
   def classroom_params

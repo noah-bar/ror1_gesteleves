@@ -35,6 +35,12 @@ class SemestersController < ApplicationController
     end
   end
 
+  def destroy
+    @semester = Semester.find(params[:id])
+    @semester.destroy
+    redirect_to semesters_path
+  end
+
   private
 
   def semester_params

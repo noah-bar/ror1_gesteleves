@@ -24,7 +24,8 @@
                 <td><%= semester.number %></td>
                 <td>
                     <a href="<%= edit_semester_path semester %>" class="btn btn-warning ml-2">Edit</a>
-                    <a href="<%= semester_path semester %>" class="btn btn-primary mr-2">Voir</a>
+                    <a href="<%= semester_path semester %>" class="btn btn-primary mr-2">See</a>
+                    <%= link_to 'Delete', semester_path(semester.id), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure ?" }, class: "btn btn-danger" %>
                 </td>
             </tr>
         <% end %>

@@ -28,7 +28,8 @@
                 <td><%= classroom.teacher.full_name %></td>
                 <td>
                     <a href="<%= edit_classroom_path classroom %>" class="btn btn-warning ml-2">Edit</a>
-                    <a href="<%= classroom_path classroom %>" class="btn btn-primary mr-2">Voir</a>
+                    <a href="<%= classroom_path classroom %>" class="btn btn-primary mr-2">See</a>
+                    <%= link_to 'Delete', classroom_path(classroom.id), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure ?" }, class: "btn btn-danger" %>
                 </td>
             </tr>
         <% end %>
