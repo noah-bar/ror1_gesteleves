@@ -32,6 +32,7 @@ class TeachersController < ApplicationController
     @teacher = Teacher.find(params[:id])
 
     if @teacher.update(teacher_params)
+      flash[:success] = "Teacher updated successfully"
       redirect_to @teacher
     else
       render :edit, status: :unprocessable_entity
@@ -41,6 +42,7 @@ class TeachersController < ApplicationController
   def destroy
     @teacher = Teacher.find(params[:id])
     @teacher.destroy
+    flash[:success] = "Teacher deleted successfully"
     redirect_to teachers_path
   end
 

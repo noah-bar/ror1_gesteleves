@@ -23,6 +23,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new lesson_params
 
     if @lesson.save
+      flash[:success] = "Lesson created successfully"
       redirect_to @lesson
     else
       render :new, status: :unprocessable_entity
@@ -37,6 +38,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
 
     if @lesson.update(lesson_params)
+      flash[:success] = "Lesson updated successfully"
       redirect_to @lesson
     else
       render :edit, status: :unprocessable_entity
@@ -46,6 +48,7 @@ class LessonsController < ApplicationController
   def destroy
     @lesson = Lesson.find(params[:id])
     @lesson.destroy
+    flash[:success] = "Lesson deleted successfully"
     redirect_to lessons_path
   end
 

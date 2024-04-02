@@ -7,6 +7,7 @@ class ExamsController < ApplicationController
     @exam = Exam.new exam_params
 
     if @exam.save
+      flash[:success] = "Exam created successfully"
       redirect_to @exam.lesson
     else
       @lesson = @exam.lesson
@@ -17,7 +18,8 @@ class ExamsController < ApplicationController
   def destroy
     @exam = Exam.find(params[:id])
     @exam.destroy
-    redirect_to :back
+    flash[:success] = "Exam deleted successfully"
+    redirect_back(fallback_location: lessons_path)
   end
 
   private

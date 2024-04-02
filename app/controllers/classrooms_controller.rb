@@ -19,6 +19,7 @@ class ClassroomsController < ApplicationController
     @classroom = Classroom.new classroom_params
 
     if @classroom.save
+      flash[:success] = "Classroom created successfully"
       redirect_to @classroom
     else
       render :new, status: :unprocessable_entity
@@ -33,6 +34,7 @@ class ClassroomsController < ApplicationController
     @classroom = Classroom.find(params[:id])
 
     if @classroom.update(classroom_params)
+      flash[:success] = "Classroom updated successfully"
       redirect_to @classroom
     else
       render :edit, status: :unprocessable_entity

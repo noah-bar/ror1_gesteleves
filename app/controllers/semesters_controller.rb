@@ -15,6 +15,7 @@ class SemestersController < ApplicationController
     @semester = Semester.new semester_params
 
     if @semester.save
+      flash[:success] = "Semester created successfully"
       redirect_to semesters_path
     else
       render :new, status: :unprocessable_entity
@@ -29,6 +30,7 @@ class SemestersController < ApplicationController
     @semester = Semester.find(params[:id])
 
     if @semester.update(semester_params)
+      flash[:success] = "Semester updated successfully"
       redirect_to @semester
     else
       render :edit, status: :unprocessable_entity
@@ -38,6 +40,7 @@ class SemestersController < ApplicationController
   def destroy
     @semester = Semester.find(params[:id])
     @semester.destroy
+    flash[:success] = "Semester deleted successfully"
     redirect_to semesters_path
   end
 

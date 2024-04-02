@@ -17,6 +17,7 @@
                 <td><%= exam.date %></td>
                 <td>
                     <a href="<%= exam_path exam %>" class="btn btn-primary mr-2">See</a>
+                    <%= link_to 'Delete', exam_path(exam.id), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure ?" }, class: "btn btn-danger" %>
                 </td>
             </tr>
         <% end %>
