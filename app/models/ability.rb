@@ -12,6 +12,7 @@ class Ability
       can :manage, Note
       can :manage, Exam
       can :manage, Lesson
+      can :manage, Branch
 
     end
 

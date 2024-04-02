@@ -7,7 +7,7 @@ class Lesson < ApplicationRecord
   has_many :students, through: :classroom
 
   def self.active
-    Lesson.joins(:classroom).merge(Classroom.active)
+    Lesson.joins([:classroom, :branch]).merge(Classroom.active).merge(Branch.active)
   end
 
   def average_for_student student

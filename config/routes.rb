@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :teachers
   resources :deans
   resources :classrooms
-  resources :branches
+  resources :branches, expect: [:show]
   resources :lessons
   resources :exams
   resources :semesters, expect: [:show]

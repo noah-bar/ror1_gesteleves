@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="card-body">
-        <% semester.lessons.each do |lesson| %>
+        <% semester.lessons.active.each do |lesson| %>
           <h5 class="card-title"><%= lesson.branch.name %></h5>
           <% lesson.exams.each do |exam| %>
             <p class="card-text"><strong><%= exam.name %> (<%= exam.date %>): </strong> <%= exam.note_for_student(@student)&.value %></p>

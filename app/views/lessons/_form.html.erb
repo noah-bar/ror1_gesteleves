@@ -1,7 +1,7 @@
 <%= form_with model: @lesson do | form | %>
     <div class="mt-2">
         <%= form.label :branch_id, class: "form-label" %>
-        <%= form.collection_select(:branch_id, Branch.all, :id, :name, {}, {class: "form-control"}) %>
+        <%= form.collection_select(:branch_id, Branch.active, :id, :name, {}, {class: "form-control"}) %>
     </div>
         <div class="mt-2">
         <%= form.label :classroom_id, class: "form-label" %>

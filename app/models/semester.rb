@@ -10,7 +10,7 @@ class Semester < ApplicationRecord
   end
 
   def average_for_student student
-    lessons_with_exams = lessons.select { |lesson| lesson.exams.exists? }
+    lessons_with_exams = lessons.active.select { |lesson| lesson.exams.exists? }
 
     return 0 if lessons_with_exams.empty?
 

@@ -3,5 +3,9 @@
         <%= form.label :name, class: "form-label" %>
         <%= form.text_field :name, class: "form-control" %>
     </div>
+    <div class="form-check">
+        <%= form.label :archived, class: "form-check-label" %>
+        <%= form.check_box :archived, class: "form-check-input" %>
+    </div>
     <%= form.submit class: "btn btn-primary mt-2" %>
 <% end %>

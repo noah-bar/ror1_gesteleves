@@ -3,14 +3,12 @@
     <thead>
         <tr>
             <th>Student</th>
-            <th>Status</th>
         </tr>
     </thead>
     <tbody>
         <% @classroom.classrooms_students.each do |classroom_student| %>
             <tr>
                 <td><%= classroom_student.student.full_name %></td>
-                <td><%= classroom_student.status %></td>
             </tr>
         <% end %>
     </tbody>

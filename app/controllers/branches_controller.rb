@@ -4,10 +4,6 @@ class BranchesController < ApplicationController
     @branches = Branch.all
   end
 
-  def show
-    @branch = Branch.find params[:id]
-  end
-
   def new
     @branch = Branch.new
   end
@@ -48,6 +44,6 @@ class BranchesController < ApplicationController
   private
 
   def branch_params
-    params.require(:branch).permit(:name)
+    params.require(:branch).permit(:name, :archived)
   end
 end

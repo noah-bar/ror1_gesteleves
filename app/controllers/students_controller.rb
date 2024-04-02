@@ -15,7 +15,6 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new student_params
-    @student.reset_password = true
 
     if @student.save
       flash[:success] = "Student created successfully"
