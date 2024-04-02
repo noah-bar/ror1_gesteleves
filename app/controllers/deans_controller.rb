@@ -1,4 +1,5 @@
 class DeansController < ApplicationController
+  load_and_authorize_resource
   def index
     @deans = Dean.all
   end

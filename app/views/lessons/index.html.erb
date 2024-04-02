@@ -1,16 +1,18 @@
 <h1>Lessons</h1>
-<%= form_with(url: lessons_path, method: :get, local: true) do %>
-  <div style="max-width: 175px; display:flex; justify-content: center; align-items: center; gap: 1rem;">
-    <label for="filter">Filter:</label>
-    <%=
-      select_tag(
-        :filter,
-        options_for_select([['Active', 'active'],['All', 'all']], params[:filter] || 'Active'),
-        onchange: 'this.form.submit();',
-        class: 'form-control',
-      )
-    %>
-  </div>
+<% if can? :manage, Lesson %>
+  <%= form_with(url: lessons_path, method: :get, local: true) do %>
+    <div style="max-width: 175px; display:flex; justify-content: center; align-items: center; gap: 1rem;">
+      <label for="filter">Filter:</label>
+      <%=
+        select_tag(
+          :filter,
+          options_for_select([['Active', 'active'],['All', 'all']], params[:filter] || 'Active'),
+          onchange: 'this.form.submit();',
+          class: 'form-control',
+        )
+      %>
+    </div>
+  <% end %>
 <% end %>
 <table class="table">
     <thead>
@@ -27,17 +29,21 @@
         <% @lessons.each do |lesson| %>
             <tr>
                 <td><%= lesson.id %></td>
-                <td><%= lesson.classroom.name %></td>
-                <td><%= lesson.branch.name %></td>
-                <td><%= lesson.teacher.full_name %></td>
+                <td><%= lesson.classroom&.name %></td>
+                <td><%= lesson.branch&.name %></td>
+                <td><%= lesson.teacher&.full_name %></td>
                 <td><%= lesson.semester&.name %></td>
                 <td>
+                  <% if can? :manage, Lesson %>
                     <a href="<%= edit_lesson_path lesson %>" class="btn btn-warning ml-2">Edit</a>
-                    <a href="<%= lesson_path lesson %>" class="btn btn-primary mr-2">See</a>
                     <%= link_to 'Delete', lesson_path(lesson.id), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure ?" }, class: "btn btn-danger" %>
+                  <% end %>
+                    <a href="<%= lesson_path lesson %>" class="btn btn-primary mr-2">See</a>
                 </td>
             </tr>
         <% end %>
     </tbody>
 </table>
+<% if can? :manage, Lesson %>
 <a href="<%= new_lesson_path %>" class="btn btn-primary">New</a>
+<% end %>

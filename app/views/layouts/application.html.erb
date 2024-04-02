@@ -22,27 +22,41 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <% if can? :manage, Student %>
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="<%= students_url %>">Students</a>
                 </li>
+                <% end %>
+                <% if can? :manage, Teacher %>
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="<%= teachers_url %>">Teachers</a>
                 </li>
+                <% end %>
+                <% if can? :manage, Dean %>
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="<%= deans_url %>">Deans</a>
                 </li>
+                <% end %>
+                <% if can? :manage, Classroom %>
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="<%= classrooms_url %>">Classrooms</a>
                 </li>
+                <% end %>
+                <% if can? :manage, Branch %>
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="<%= branches_url %>">Branches</a>
                 </li>
+                <% end %>
+                <% if can? :manage, Semester %>
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="<%= semesters_url %>">Semesters</a>
                 </li>
+                <% end %>
+                <% if can? :manage, Lesson %>
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="<%= lessons_url %>">Lessons</a>
                 </li>
+                <% end %>
               </ul>
             </div>
             <div>

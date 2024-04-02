@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  load_and_authorize_resource
   def create
     note = Note.find_by(exam_id: note_params[:exam_id], student_id: note_params[:student_id]) || Note.new(exam_id: note_params[:exam_id], student_id: note_params[:student_id])
     if note_params[:value] == nil

@@ -10,6 +10,8 @@ class PersonSessionsController < ApplicationController
       session[:user_id] = @person.id
       if @person.is_student?
         redirect_to student_path(@person.id)
+      elsif @person.is_teacher?
+        redirect_to lessons_path
       else
         redirect_to teachers_path
       end

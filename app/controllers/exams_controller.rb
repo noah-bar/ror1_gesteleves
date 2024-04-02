@@ -1,4 +1,5 @@
 class ExamsController < ApplicationController
+  load_and_authorize_resource
   def show
     @exam = Exam.find params[:id]
   end

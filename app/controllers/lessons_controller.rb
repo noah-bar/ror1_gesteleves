@@ -1,9 +1,13 @@
 class LessonsController < ApplicationController
+  load_and_authorize_resource
   def index
-    if params[:filter] == 'all'
-      @lessons = Lesson.all
+    @lessons = Lesson.includes([:branch, :teacher, :classroom, :semester])
+    if current_user.type == 'Teacher'
+      @lessons = @lessons.active.where('lessons.teacher_id = ?', current_user.id)
+    elsif params[:filter] == 'all'
+      @lessons = @lessons.all
     else
-      @lessons = Lesson.active
+      @lessons = @lessons.active
     end
   end
 
