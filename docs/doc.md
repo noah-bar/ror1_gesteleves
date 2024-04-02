@@ -90,10 +90,10 @@ Le schéma suit les conventions de Rails, y compris :
 
 Le respect de ces conventions permet à Rails de fournir une multitude de fonctionnalités automatiques, comme les associations entre modèles et la gestion simplifiée des migrations de base de données.
 ## Webographie
-[Documentation ruby on rails](https://guides.rubyonrails.org/)
-[Gem cancancan](https://github.com/CanCanCommunity/cancancan)
-[Gem bcrypt](https://rubygems.org/gems/bcrypt/versions/3.1.12?locale=fr)
-[Bootstrap](https://getbootstrap.com/)
-[Gem bootstrap](https://github.com/twbs/bootstrap-rubygem)
+- [Documentation ruby on rails](https://guides.rubyonrails.org/)
+- [Gem cancancan](https://github.com/CanCanCommunity/cancancan)
+- [Gem bcrypt](https://rubygems.org/gems/bcrypt/versions/3.1.12?locale=fr)
+- [Bootstrap](https://getbootstrap.com/)
+- [Gem bootstrap](https://github.com/twbs/bootstrap-rubygem)
 
 
