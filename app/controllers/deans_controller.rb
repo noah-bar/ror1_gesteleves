@@ -15,7 +15,6 @@ class DeansController < ApplicationController
   def create
     puts dean_params
     @dean = Dean.new dean_params
-    @dean.reset_password = true
 
     if @dean.save
       flash[:success] = "Dean created successfully"

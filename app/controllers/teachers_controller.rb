@@ -15,7 +15,6 @@ class TeachersController < ApplicationController
   def create
     puts teacher_params
     @teacher = Teacher.new teacher_params
-    @teacher.reset_password = true
 
     if @teacher.save
       flash[:success] = "Teacher created successfully"

@@ -27,9 +27,5 @@
         <%= form.label :city, class: "form-label" %>
         <%= form.text_field :city, class: "form-control" %>
     </div>
-    <div class="mt-2">
-        <%= form.label :role, class: "form-label" %>
-        <%= form.select :role, Teacher.roles.keys.map { |role| [role.titleize, role] }, {}, { class: "form-control" } %>
-    </div>
     <%= form.submit class: "btn btn-primary mt-2" %>
 <% end %>
