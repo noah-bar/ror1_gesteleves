@@ -1,7 +1,7 @@
 <h1><%= @exam.name %></h1>
 <h2>Students</h2>
 <input type="hidden" class="exam-id" value="<%= @exam.id%>"/>
-<table class="table">
+<table class="table" data-controller="exams">
     <thead>
         <tr>
             <th scope="col">Full name</th>
@@ -14,8 +14,8 @@
                 <td><%= student.full_name %></td>
                 <td>
                     <input type="hidden" class="student-id" value="<%= student.id%>"/>
-                    <input 
-                        class="form-control note-input" 
+                    <input
+                        class="form-control note-input"
                         value="<%= @exam.note_for_student(student)&.value || "N/A" %>"
                         style="max-width:75px;"
                     />
