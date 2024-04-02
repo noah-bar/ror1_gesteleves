@@ -23,6 +23,10 @@ List all dependencies and their version needed by the project as :
     ```
     bin/rails db:seed
     ```
+5. Compile assets
+    ```
+   bin/rails assets:precompile
+    ```
 5. Run server
    ```
    bin/rails s

@@ -4,26 +4,16 @@ class Ability
   include CanCan::Ability
 
   def initialize(person)
-    person ||= Person.new
-    if person.type == 'Dean'
-      can :manage, Classroom
-      can :manage, Person
-      can :manage, Semester
-      can :manage, Note
-      can :manage, Exam
-      can :manage, Lesson
-      can :manage, Branch
-
-    end
-
-    if person.type == 'Teacher'
-      can :read, Lesson, { teacher_id: person.id }
-      can :manage, Exam, { lesson: { teacher_id: person.id }}
-      can :manage, Note, { exam: { lesson: { teacher_id: person.id } } }
-    end
-
-    if person.type == 'Student'
-      can :read, Student, { id: person.id }
+    person ||= Person.new  # Assume une personne non connectée par défaut
+    case person.type
+    when 'Dean'
+      can :manage, [Classroom, Person, Semester, Note, Exam, Lesson, Branch]
+    when 'Teacher'
+      can :read, Lesson, teacher_id: person.id
+      can :manage, Exam, lesson: { teacher_id: person.id }
+      can :manage, Note, exam: { lesson: { teacher_id: person.id } }
+    when 'Student'
+      can :read, Student, id: person.id
     end
   end
 end
