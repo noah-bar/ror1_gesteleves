@@ -40,8 +40,10 @@ end
 - **Student**: Peut uniquement consulter son bulletin de notes.
 
 ## Base de donnée
-
+### Schéma de la base de données
 ![Schéma de la base de données](database.png)
+### Comparatif
+Ayant égaré le schéma que j'avais élaboré lors du module "SQL1", j'ai opté pour reconstruire de zéro. Bien que cela m'empêche de réaliser une comparaison directe pour mettre en évidence les ajustements nécessaires, cette expérience s'est révélée enrichissante. Elle m'a permis de découvrir toute la puissance d'Active Record et des migrations pour créer une base de données de manière efficace et rapide.
 ### Tables
 #### `people`
 - **STI** : Implémente l'Héritage de Table Unique pour stocker différents types d'utilisateurs dans une seule table. Les types possibles sont `Dean`, `Student` et `Teacher`.
