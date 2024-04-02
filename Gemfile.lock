@@ -79,6 +79,7 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
     builder (3.2.4)
+    cancancan (3.5.0)
     capybara (3.39.2)
       addressable
       matrix
@@ -261,6 +262,7 @@ DEPENDENCIES
   bcrypt
   bootsnap
   bootstrap (~> 5.3.2)
+  cancancan
   capybara
   debug
   importmap-rails

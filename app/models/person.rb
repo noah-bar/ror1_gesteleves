@@ -7,6 +7,14 @@ class Person < ApplicationRecord
     first_name + " " + last_name
   end
 
+  def is_teacher?
+    type == 'Teacher'
+  end
+
+  def is_student?
+    type == 'Student'
+  end
+
   private
 
   def downcase_email

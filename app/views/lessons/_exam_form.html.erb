@@ -1,16 +1,26 @@
-<%= asset_path('exams/exams.js') %>
-<%= form_with model: @exam do | form | %>
-    <td>
-        <%= form.text_field :name, class: "form-control" %>
-    </td>
-    <td>
-        <%= form.text_field :weight, class: "form-control" %>
-    </td>
-    <td>
-        <%= form.date_field :date, class: "form-control" %>
-    </td>
-    <td>
-        <%= form.hidden_field :lesson_id, class: "form-control" %>
-        <%= form.submit class: "btn btn-primary mt-2" %>
-    </td>
+<% if @exam.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Fix the following errors:</h4>
+    <ul>
+      <% @exam.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @exam do |form| %>
+  <td>
+    <%= form.text_field :name, class: "form-control" %>
+  </td>
+  <td>
+    <%= form.text_field :weight, value: 1, class: "form-control" %>
+  </td>
+  <td>
+    <%= form.date_field :date, value: Date.today, class: "form-control" %>
+  </td>
+  <td>
+    <%= form.hidden_field :lesson_id, class: "form-control" %>
+    <%= form.submit "Submit", class: "btn btn-primary mt-2" %>
+  </td>
 <% end %>

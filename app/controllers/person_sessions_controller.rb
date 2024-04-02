@@ -8,7 +8,11 @@ class PersonSessionsController < ApplicationController
 
     if @person && @person.authenticate(params[:password])
       session[:user_id] = @person.id
-      redirect_to teachers_path
+      if @person.is_student?
+        redirect_to student_path(@person.id)
+      else
+        redirect_to teachers_path
+      end
     else
       flash[:error] = "Login failed"
       redirect_to new_person_session_path

@@ -1,4 +1,4 @@
-<h1>Teachers</h1>
+<h1>Deans</h1>
 <table class="table">
     <thead>
         <tr>
@@ -9,18 +9,18 @@
         </tr>
     </thead>
     <tbody>
-        <% @teachers.each do |teacher| %>
+        <% @deans.each do |dean| %>
             <tr>
-                <td><%= teacher.id %></td>
-                <td><%= teacher.first_name %></td>
-                <td><%= teacher.last_name %></td>
+                <td><%= dean.id %></td>
+                <td><%= dean.first_name %></td>
+                <td><%= dean.last_name %></td>
                 <td>
-                    <a href="<%= edit_teacher_path teacher %>" class="btn btn-warning ml-2">Edit</a>
-                    <a href="<%= teacher_path teacher %>" class="btn btn-primary mr-2">See</a>
-                    <%= link_to 'Delete', teacher_path(teacher.id), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure ?" }, class: "btn btn-danger" %>
+                    <a href="<%= edit_dean_path dean %>" class="btn btn-warning ml-2">Edit</a>
+                    <a href="<%= dean_path dean %>" class="btn btn-primary mr-2">See</a>
+                    <%= link_to 'Delete', dean_path(dean.id), data: { "turbo-method": :delete, "turbo-confirm": "Are you sure ?" }, class: "btn btn-danger" %>
                 </td>
             </tr>
         <% end %>
     </tbody>
 </table>
-<a href="<%= new_teacher_path %>" class="btn btn-primary">New</a>
+<a href="<%= new_dean_path %>" class="btn btn-primary">New</a>
